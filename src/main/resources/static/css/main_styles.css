@@ -19,7 +19,7 @@
 }
 
 .btn-link {
-    color: #4285F4 !important;
+    color: #4285F4;
 }
 
 .card-body {
@@ -27,6 +27,6 @@
 }
 
 .card-img-top {
-    opacity: 0.9;
+    opacity: 0.95;
     background-color: #ECEBE4;
 }
