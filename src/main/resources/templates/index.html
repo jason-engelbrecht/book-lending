@@ -3,58 +3,83 @@
 <head th:replace="fragments/layout :: head"></head>
 
 <body>
-<div class="jumbotron mb-0">
-    <div class="text-white py-4 px-3">
-        <h1 class="display-4">Book Lending Application</h1>
-        <h4>
-            A next generation book lending application that
-            connects borrowers with the stories they love.
-        </h4>
-    </div>
-</div>
+    <div th:replace="fragments/layout :: jumbotron"></div>
+    <nav th:replace="fragments/layout :: navbar"></nav>
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav"
-            aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item px-2">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item px-2">
-                <a class="nav-link" href="#">Profile</a>
-            </li>
-            <li class="nav-item px-2">
-                <a class="nav-link" href="#">Lenders</a>
-            </li>
-
-            <li class="nav-item dropdown px-2">
-                <a class="nav-link dropdown-toggle" id="books" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Books </a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="books">
-                    <a class="dropdown-item" href="#">All Books</a>
-                    <a class="dropdown-item" href="#">My Books</a>
-                    <a class="dropdown-item" href="#">Add a Book</a>
+    <div class="main-content p-5">
+        <!-- card deck -->
+        <div class="card-deck">
+            <!-- lenders card -->
+            <div class="card mb-4 mx-lg-4 mx-xl-4">
+                <div class="view overlay">
+                    <img class="card-img-top" th:src="@{/images/borrow.jpg}" alt="borrow">
+                    <a href="#">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
                 </div>
-            </li>
 
-            <li class="nav-item dropdown px-2">
-                <a class="nav-link dropdown-toggle" id="user" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i></a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="user">
-                    <a class="dropdown-item" href="#">Register</a>
-                    <a class="dropdown-item" href="#">Login</a>
+                <div class="card-body pb-1">
+                    <h4 class="card-title">Lenders</h4>
+                    <p class="card-text">
+                        Book lending is alive and well! Why buy a new book when
+                        you can crowd-source a collection of stories that will
+                        keep you busy reading for years to come.
+                    </p>
+
+                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0">Register!</a>
+                    <a href="#" class="btn btn-link pl-3">View Lenders</a>
                 </div>
-            </li>
-        </ul>
-        <!-- Links -->
+            </div>
+            <!-- lenders card -->
+
+            <!-- books card -->
+            <div class="card mb-4 mx-lg-4 mx-xl-4">
+                <div class="view overlay">
+                    <img class="card-img-top" th:src="@{/images/book.jpg}" alt="book">
+                    <a href="#">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <div class="card-body pb-1">
+                    <h4 class="card-title">Books</h4>
+                    <p class="card-text">
+                        Browse a selection of over 1000 book titles. You'll find a title
+                        in any genre you like, including mysteries, science-fiction and romance.
+                        A book for every day!
+                    </p>
+
+                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0">My Books</a>
+                    <a href="#" class="btn btn-link pl-3">Add a Book</a>
+                </div>
+            </div>
+            <!-- books card -->
+
+            <!-- borrowed books card -->
+            <div class="card mb-4 mx-lg-4 mx-xl-4">
+                <div class="view overlay">
+                    <img class="card-img-top" th:src="@{/images/lending.png}" alt="lending">
+                    <a href="#">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <div class="card-body pb-1">
+                    <h4 class="card-title">Borrowed Books</h4>
+                    <p class="card-text">
+                        Connect with 100's of other users from your area. User's are
+                        expected to take care of any borrowed materials and to return
+                        them in a timely manner.
+                    </p>
+
+                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0">Borrow a Book!</a>
+                    <a href="#" class="btn btn-link pl-3">Return a book</a>
+                </div>
+            </div>
+            <!-- borrowed books card -->
+        </div>
+        <!-- card deck -->
     </div>
-    <!-- Collapsible content -->
-</nav>
 </body>
 
 <span th:replace="fragments/layout :: javascript"></span>

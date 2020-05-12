@@ -11,5 +11,22 @@
 }
 
 .nav-item:not(:last-child) {
-    border-right: 1px solid white;
+    border-right: 1px solid #EEF0F2;
+}
+
+.main-content {
+    background-color: #DADDD8;
+}
+
+.btn-link {
+    color: #4285F4 !important;
+}
+
+.card-body {
+    background-color: #FAFAFF;
+}
+
+.card-img-top {
+    opacity: 0.9;
+    background-color: #ECEBE4;
 }
