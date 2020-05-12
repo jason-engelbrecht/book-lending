@@ -16,15 +16,18 @@
                 </div>
 
                 <div class="card-body pb-1">
-                    <h4 class="card-title">Lenders</h4>
-                    <p class="card-text">
+                    <h4 class="card-title"
+                        th:text="#{home.lenders.title}">Lenders</h4>
+                    <p class="card-text" th:text="#{home.lenders.desc}">
                         Book lending is alive and well! Why buy a new book when
                         you can crowd-source a collection of stories that will
                         keep you busy reading for years to come.
                     </p>
 
-                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0">Register!</a>
-                    <a href="#" class="btn btn-link pl-3">View Lenders</a>
+                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0"
+                       th:text="#{home.lenders.register}">Register</a>
+                    <a href="#" class="btn btn-link pl-3"
+                       th:text="#{home.lenders.view}">View Lenders</a>
                 </div>
             </div>
             <!-- lenders card -->
@@ -36,15 +39,18 @@
                 </div>
 
                 <div class="card-body pb-1">
-                    <h4 class="card-title">Books</h4>
-                    <p class="card-text">
+                    <h4 class="card-title"
+                        th:text="#{home.books.title}">Books</h4>
+                    <p class="card-text" th:text="#{home.books.desc}">
                         Browse a selection of over 1000 book titles. You'll find a title
                         in any genre you like, including mysteries, science-fiction and romance.
                         A book for every day!
                     </p>
 
-                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0">My Books</a>
-                    <a href="#" class="btn btn-link pl-3">Add a Book</a>
+                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0"
+                       th:text="#{home.books.myBooks}">My Books</a>
+                    <a href="#" class="btn btn-link pl-3"
+                       th:text="#{home.books.addBook}">Add a Book</a>
                 </div>
             </div>
             <!-- books card -->
@@ -56,15 +62,18 @@
                 </div>
 
                 <div class="card-body pb-1">
-                    <h4 class="card-title">Borrowed Books</h4>
-                    <p class="card-text">
+                    <h4 class="card-title"
+                        th:text="#{home.borrowed.title}">Borrowed Books</h4>
+                    <p class="card-text" th:text="#{home.borrowed.desc}">
                         Connect with 100's of other users from your area. User's are
                         expected to take care of any borrowed materials and to return
                         them in a timely manner.
                     </p>
 
-                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0">Borrow a Book!</a>
-                    <a href="#" class="btn btn-link pl-3">Return a book</a>
+                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0"
+                       th:text="#{home.borrowed.borrow}">Borrow a Book</a>
+                    <a href="#" class="btn btn-link pl-3"
+                       th:text="#{home.borrowed.return}">Return a book</a>
                 </div>
             </div>
             <!-- borrowed books card -->
