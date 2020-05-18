@@ -1,4 +1,10 @@
 package edu.greenriver.it.booklendingspring.repositories;
 
-public interface BookRepository {
+import edu.greenriver.it.booklendingspring.models.Book;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.Optional;
+
+public interface BookRepository extends CrudRepository<Book, Long> {
+    Optional<Book> getBookByISBN(String isbn);
 }
