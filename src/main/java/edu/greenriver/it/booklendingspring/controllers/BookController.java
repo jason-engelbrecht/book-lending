@@ -24,7 +24,7 @@ public class BookController {
         return "books/all_books";
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/{isbn}")
     public String viewBook(@PathVariable String isbn, Model model) {
         Book book = bookService.getBook(isbn);
         model.addAttribute("book", book);

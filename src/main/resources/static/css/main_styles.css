@@ -3,6 +3,23 @@ body {
     background-color: #DADDD8;
 }
 
+.card-body {
+    background-color: #FAFAFF;
+}
+
+.card-columns {
+    column-count: 4;
+}
+
+.card-img-top {
+    opacity: 0.95;
+    background-color: #ECEBE4;
+}
+
+.btn-link {
+    color: #4285F4 !important;
+}
+
 .jumbotron {
     background-image: url("../images/header.jpg");
     background-color: #1C1C1C;
@@ -15,19 +32,6 @@ body {
 
 .nav-item:not(:last-child) {
     border-right: 1px solid #EEF0F2;
-}
-
-.btn-link {
-    color: #4285F4 !important;
-}
-
-.card-body {
-    background-color: #FAFAFF;
-}
-
-.card-img-top {
-    opacity: 0.95;
-    background-color: #ECEBE4;
 }
 
 .table-head {

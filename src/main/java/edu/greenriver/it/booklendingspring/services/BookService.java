@@ -18,7 +18,7 @@ public class BookService {
 
     public Book getBook(String isbn) {
         return bookRepository.
-                getBookByISBN(isbn).
+                getBookByIsbn(isbn).
                 orElse(null);
     }
 }

@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface BookRepository extends CrudRepository<Book, Long> {
-    Optional<Book> getBookByISBN(String isbn);
+    Optional<Book> getBookByIsbn(String isbn);
 }

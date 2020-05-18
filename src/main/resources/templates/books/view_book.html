@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head"></head>
+
+<body>
+<header th:replace="fragments/layout :: header"></header>
+<div class="container main-content p-5">
+
+    <p th:text="${book.getTitle()}"></p>
+
+
+</div>
+</body>
+
+<span th:replace="fragments/layout :: javascript"></span>
+</html>
