@@ -5,10 +5,33 @@
 <body>
 <header th:replace="fragments/layout :: header"></header>
 <div class="container main-content p-5">
+    <div class="row">
+        <h1 class="ml-3" th:text="${book.getTitle()} + ' by ' + ${book.getAuthor()}"></h1>
+        <div class="col-md-8">
+            <div class="card p-4 hoverable">
+                <h5><span class="h5">ID: </span>
+                    <span th:text="${book.getId()}"></span></h5>
+                <hr>
+                <h5><span class="h5">Title: </span>
+                    <span th:text="${book.getTitle()}"></span></h5>
+                <hr>
+                <h5><span class="h5">Author: </span>
+                    <span th:text="${book.getAuthor()}"></span></h5>
+                <hr>
+                <h5><span class="h5">Pages: </span>
+                    <span th:text="${book.getPages()}"></span></h5>
+                <hr>
+                <h5><span class="h5">Synopsis: </span><br>
+                    <span th:text="${book.getSynopsis()}"></span></h5>
+            </div>
+        </div>
 
-    <p th:text="${book.getTitle()}"></p>
-
-
+        <div class="col-md-4">
+            <div class="card hoverable">
+                <img class="card-img rounded" th:src="@{'/images/book_covers/' + ${book.getTitle()} + '.jpg'}">
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 
