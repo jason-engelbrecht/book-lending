@@ -7,6 +7,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * @author Jason Engelbrecht
+ * @version 1.0
+ * Lender entity
+ */
 @Entity //persist objects - creates lenders table
 @Data //getters, setters, toString
 @NoArgsConstructor
