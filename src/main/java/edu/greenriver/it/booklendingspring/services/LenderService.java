@@ -15,4 +15,10 @@ public class LenderService {
     public Iterable<Lender> getAllLenders() {
         return lenderRepository.findAll();
     }
+
+    public Lender getLender(String username) {
+        return lenderRepository.
+                getLenderByUsername(username).
+                orElse(null);
+    }
 }

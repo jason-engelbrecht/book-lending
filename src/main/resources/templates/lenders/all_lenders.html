@@ -4,11 +4,10 @@
 
 <body>
 <header th:replace="fragments/layout :: header"></header>
-
-<div class="container main-content p-lg-5 p-xl-5">
+<div class="container main-content p-5">
     <h1 class="text-center">All Lenders</h1>
     <div class="shadow rounded bg-white">
-        <table class="table table-hover table-bordered">
+        <table class="table table-bordered table-striped">
             <thead class="table-head text-white">
             <tr>
                 <th scope="col">Username</th>
@@ -22,15 +21,14 @@
                 <th scope="row" th:text="${lender.getUsername()}">username</th>
                 <td th:text="${lender.getFirstName()}">first</td>
                 <td th:text="${lender.getLastName()}">last</td>
-                <td><a href="#" class="btn btn-link p-0">View</a></td>
+                <td><a th:href="@{'/lenders/' + ${lender.getUsername()}}"
+                       class="btn btn-link p-0">View
+                </a></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
-
-
-
 </body>
 
 <span th:replace="fragments/layout :: javascript"></span>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head"></head>
+
+<body>
+<header th:replace="fragments/layout :: header"></header>
+<div class="container main-content p-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 th:text="${lender.getUsername()}"></h1>
+            <div class="card p-4">
+                <h5><span class="h5">ID: </span>
+                    <span th:text="${lender.getId()}"></span></h5>
+                <hr>
+                <h5><span class="h5">First name: </span>
+                    <span th:text="${lender.getFirstName()}"></span></h5>
+                <hr>
+                <h5><span class="h5">Last name: </span>
+                    <span th:text="${lender.getLastName()}"></span></h5>
+                <hr>
+                <h5><span class="h5">Biography: </span><br>
+                    <span th:text="${lender.getBio()}"></span></h5>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h1>Books to Lend</h1>
+            <div class="card">
+gg
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<span th:replace="fragments/layout :: javascript"></span>
+</html>
