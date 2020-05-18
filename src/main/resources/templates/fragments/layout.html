@@ -17,66 +17,70 @@
 </head>
 
 <body>
-    <div class="jumbotron mb-0 pl-5" th:fragment="jumbotron">
-        <div class="text-white py-4 px-3">
-            <h1 class="display-4" th:text="#{home.title}">Book Lending Application</h1>
-            <h4 th:text="#{home.subtitle}">
-                A next generation book lending application that
-                connects borrowers with the stories they love.
-            </h4>
+
+    <header th:fragment="header">
+        <div class="jumbotron mb-0 pl-5">
+            <div class="text-white py-4 px-3">
+                <h1 class="display-4" th:text="#{home.title}">Book Lending Application</h1>
+                <h4 th:text="#{home.subtitle}">
+                    A next generation book lending application that
+                    connects borrowers with the stories they love.
+                </h4>
+            </div>
         </div>
-    </div>
 
-    <nav class="navbar navbar-expand-md navbar-dark" th:fragment="navbar">
-        <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav"
-                aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav"
+                    aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="nav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item px-2">
-                    <a class="nav-link" href="#"
-                       th:text="#{home.nav.home}">Home</a>
-                </li>
-                <li class="nav-item px-2">
-                    <a class="nav-link" href="#"
-                       th:text="#{home.nav.profile}">Profile</a>
-                </li>
-                <li class="nav-item px-2">
-                    <a class="nav-link" href="#"
-                       th:text="#{home.nav.lenders}">Lenders</a>
-                </li>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#"
+                           th:text="#{home.nav.home}">Home</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#"
+                           th:text="#{home.nav.profile}">Profile</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#"
+                           th:text="#{home.nav.lenders}">Lenders</a>
+                    </li>
 
-                <li class="nav-item dropdown px-2">
-                    <a class="nav-link dropdown-toggle" id="books" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"
-                       th:text="#{home.nav.books}">Books </a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="books">
-                        <a class="dropdown-item" href="#"
-                           th:text="#{home.nav.allBooks}">All Books</a>
-                        <a class="dropdown-item" href="#"
-                           th:text="#{home.nav.myBooks}">My Books</a>
-                        <a class="dropdown-item" href="#"
-                           th:text="#{home.nav.addBook}">Add a Book</a>
-                    </div>
-                </li>
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle" id="books" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"
+                           th:text="#{home.nav.books}">Books </a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="books">
+                            <a class="dropdown-item" href="#"
+                               th:text="#{home.nav.allBooks}">All Books</a>
+                            <a class="dropdown-item" href="#"
+                               th:text="#{home.nav.myBooks}">My Books</a>
+                            <a class="dropdown-item" href="#"
+                               th:text="#{home.nav.addBook}">Add a Book</a>
+                        </div>
+                    </li>
 
-                <li class="nav-item dropdown px-2">
-                    <a class="nav-link dropdown-toggle" id="user" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false"
-                       th:text="#{home.nav.users}">Users </a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="user">
-                        <a class="dropdown-item" href="#"
-                           th:text="#{home.nav.register}">Register</a>
-                        <a class="dropdown-item" href="#"
-                           th:text="#{home.nav.login}">Login</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle" id="user" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"
+                           th:text="#{home.nav.users}">Users </a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="user">
+                            <a class="dropdown-item" href="#"
+                               th:text="#{home.nav.register}">Register</a>
+                            <a class="dropdown-item" href="#"
+                               th:text="#{home.nav.login}">Login</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
 </body>
 
 <span th:fragment="javascript">
