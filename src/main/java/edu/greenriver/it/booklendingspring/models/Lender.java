@@ -13,7 +13,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 public class Lender {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto-increment
     private Long id;
