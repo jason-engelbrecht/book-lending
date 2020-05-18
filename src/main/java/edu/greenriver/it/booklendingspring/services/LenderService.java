@@ -12,7 +12,7 @@ public class LenderService {
         this.lenderRepository = lenderRepository;
     }
 
-    public Iterable<Lender> getLenders() {
+    public Iterable<Lender> getAllLenders() {
         return lenderRepository.findAll();
     }
 }

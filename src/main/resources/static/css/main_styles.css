@@ -1,4 +1,7 @@
 /* Main Styles */
+body {
+    background-color: #DADDD8;
+}
 
 .jumbotron {
     background-image: url("../images/header.jpg");
@@ -14,12 +17,8 @@
     border-right: 1px solid #EEF0F2;
 }
 
-.main-content {
-    background-color: #DADDD8;
-}
-
 .btn-link {
-    color: #4285F4;
+    color: #4285F4 !important;
 }
 
 .card-body {
@@ -29,4 +28,8 @@
 .card-img-top {
     opacity: 0.95;
     background-color: #ECEBE4;
+}
+
+.table-head {
+    background-color: #1C1C1C;
 }
