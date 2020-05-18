@@ -25,7 +25,7 @@ public class LenderController {
     }
 
     @GetMapping("/{username}")
-    public String allLenders(@PathVariable String username, Model model) {
+    public String viewLender(@PathVariable String username, Model model) {
         Lender lender = lenderService.getLender(username);
         model.addAttribute("lender", lender);
         return "lenders/view_lender";

@@ -22,7 +22,7 @@
                 <td th:text="${lender.getFirstName()}">first</td>
                 <td th:text="${lender.getLastName()}">last</td>
                 <td><a th:href="@{'/lenders/' + ${lender.getUsername()}}"
-                       class="btn btn-link p-0">View
+                       class="btn btn-link p-0">View <i class="fas fa-arrow-right"></i>
                 </a></td>
             </tr>
             </tbody>
