@@ -41,4 +41,12 @@ public class LenderService {
                 getLenderByUsername(username).
                 orElse(null);
     }
+
+    public Lender registerUser(Lender lender) {
+        boolean passwordsMatch = lender.getPassword().equals(lender.getConfirmedPassword());
+        if(passwordsMatch) {
+            return lenderRepository.save(lender);
+        }
+        return null;
+    }
 }

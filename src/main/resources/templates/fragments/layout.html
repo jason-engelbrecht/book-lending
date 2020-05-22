@@ -70,7 +70,7 @@
                            aria-haspopup="true" aria-expanded="false"
                            th:text="#{home.nav.users}">Users </a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="user">
-                            <a class="dropdown-item" href="#"
+                            <a class="dropdown-item" th:href="@{'/register'}"
                                th:text="#{home.nav.register}">Register</a>
                             <a class="dropdown-item" href="#"
                                th:text="#{home.nav.login}">Login</a>
