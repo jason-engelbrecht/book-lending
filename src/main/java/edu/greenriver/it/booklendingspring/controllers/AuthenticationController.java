@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @ToString
@@ -45,8 +47,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/add/book")
-    public String postAddBook(@ModelAttribute Book book, Model model) {
-        book = bookService.addBook(book);
+    public String postAddBook(@ModelAttribute Book book, Model model,
+                              @RequestParam("cover-image") MultipartFile file) {
+        book = bookService.addBook(book, file);
         if(book == null) {
             model.addAttribute("error", "ISBN is already in use");
             return "/forms/add_book";

@@ -9,7 +9,7 @@
     <div class="card-columns">
         <div class="card m-3" th:each="book : ${books}">
             <div class="view overlay">
-                <img class="card-img-top" th:src="@{'/images/book_covers/' + ${book.getTitle()} + '.jpg'}"
+                <img class="card-img-top" th:src="@{${book.getImage()}}"
                      alt="Card image cap">
                 <a th:href="@{'/books/' + ${book.getIsbn()}}">
                     <div class="mask rgba-white-slight"></div>

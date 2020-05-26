@@ -28,7 +28,7 @@
 
         <div class="col-md-4">
             <div class="card hoverable">
-                <img class="card-img rounded" th:src="@{'/images/book_covers/' + ${book.getTitle()} + '.jpg'}">
+                <img class="card-img rounded" th:src="@{${book.getImage()}}">
             </div>
         </div>
     </div>

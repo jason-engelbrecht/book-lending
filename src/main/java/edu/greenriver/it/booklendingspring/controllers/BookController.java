@@ -3,11 +3,17 @@ package edu.greenriver.it.booklendingspring.controllers;
 import edu.greenriver.it.booklendingspring.models.Book;
 import edu.greenriver.it.booklendingspring.services.BookService;
 import lombok.ToString;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author Jason Engelbrecht
@@ -51,5 +57,20 @@ public class BookController {
         Book book = bookService.getBook(isbn);
         model.addAttribute("book", book);
         return "books/view_book";
+    }
+
+    @GetMapping("/image/{isbn}")
+    public void bookImage(@PathVariable String isbn, HttpServletResponse response) throws IOException {
+        Book book = bookService.getBook(isbn);
+        Byte[] bytes = book.getCoverImage();
+
+        byte[] fileBytes = new byte[bytes.length];
+        for (int i = 0; i < bytes.length; i++) {
+            fileBytes[i] = bytes[i];
+        }
+
+        response.setContentType("image/jpeg");
+        InputStream io = new ByteArrayInputStream(fileBytes);
+        IOUtils.copy(io, response.getOutputStream());
     }
 }

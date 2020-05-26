@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.core.io.ClassPathResource;
 
 import javax.persistence.*;
 
@@ -29,4 +30,15 @@ public class Book {
 
     @Lob
     private String synopsis;
+    @Lob
+    private Byte[] coverImage;
+
+    public String getImage() {
+        String location = "/images/book_covers/" + title + ".jpg";
+        boolean imageExists = new ClassPathResource("/static" + location).isFile();
+        if(imageExists) {
+            return location;
+        }
+        return "/books/image/" + isbn;
+    }
 }
