@@ -1,6 +1,8 @@
 package edu.greenriver.it.booklendingspring.controllers;
 
+import edu.greenriver.it.booklendingspring.models.Book;
 import edu.greenriver.it.booklendingspring.models.Lender;
+import edu.greenriver.it.booklendingspring.services.BookService;
 import edu.greenriver.it.booklendingspring.services.LenderService;
 import lombok.ToString;
 import org.springframework.stereotype.Controller;
@@ -13,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @ToString
 public class AuthenticationController {
     private LenderService lenderService;
+    private BookService bookService;
 
-    public AuthenticationController(LenderService lenderService) {
+    public AuthenticationController(LenderService lenderService, BookService bookService) {
         this.lenderService = lenderService;
+        this.bookService = bookService;
     }
 
     @GetMapping("/register")
@@ -32,5 +36,11 @@ public class AuthenticationController {
             return "/forms/register";
         }
         return "redirect:/lenders/" + lender.getUsername();
+    }
+
+    @GetMapping("/add/book")
+    public String getAddBook(Model model) {
+        model.addAttribute("book", new Book());
+        return "/forms/add_book";
     }
 }
