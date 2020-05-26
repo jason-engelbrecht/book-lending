@@ -42,6 +42,11 @@ public class LenderService {
                 orElse(null);
     }
 
+    /**
+     * Register a new lender user
+     * @param lender lender to regiser
+     * @return lender saved or null
+     */
     public Lender registerUser(Lender lender) {
         boolean passwordsMatch = lender.getPassword().equals(lender.getConfirmedPassword());
         if(passwordsMatch) {

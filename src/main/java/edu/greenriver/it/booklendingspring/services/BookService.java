@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * @author Jason Engelbrecht
@@ -46,6 +45,12 @@ public class BookService {
                 orElse(null);
     }
 
+    /**
+     * Add a new book and its cover image
+     * @param book book to add
+     * @param file cover image
+     * @return added book or null
+     */
     public Book addBook(Book book, MultipartFile file) {
         boolean uniqueIsbn = bookRepository.getBookByIsbn(book.getIsbn()).isEmpty();
         if(uniqueIsbn) {

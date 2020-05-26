@@ -33,6 +33,10 @@ public class Book {
     @Lob
     private Byte[] coverImage;
 
+    /**
+     * Get the image from the appropriate place
+     * @return image location
+     */
     public String getImage() {
         String location = "/images/book_covers/" + title + ".jpg";
         boolean imageExists = new ClassPathResource("/static" + location).isFile();

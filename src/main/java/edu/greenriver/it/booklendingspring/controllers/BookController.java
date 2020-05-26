@@ -59,6 +59,12 @@ public class BookController {
         return "books/view_book";
     }
 
+    /**
+     * Get book cover image by isbn
+     * @param isbn isbn of book to get image
+     * @param response http response
+     * @throws IOException IO exception
+     */
     @GetMapping("/image/{isbn}")
     public void bookImage(@PathVariable String isbn, HttpServletResponse response) throws IOException {
         Book book = bookService.getBook(isbn);
