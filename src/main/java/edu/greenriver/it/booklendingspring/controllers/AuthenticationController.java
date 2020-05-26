@@ -43,4 +43,14 @@ public class AuthenticationController {
         model.addAttribute("book", new Book());
         return "/forms/add_book";
     }
+
+    @PostMapping("/add/book")
+    public String postAddBook(@ModelAttribute Book book, Model model) {
+        book = bookService.addBook(book);
+        if(book == null) {
+            model.addAttribute("error", "ISBN is already in use");
+            return "/forms/add_book";
+        }
+        return "redirect:/books/" + book.getIsbn();
+    }
 }

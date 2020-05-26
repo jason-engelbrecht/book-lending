@@ -60,7 +60,7 @@
                                th:text="#{home.nav.allBooks}">All Books</a>
                             <a class="dropdown-item" href="#"
                                th:text="#{home.nav.myBooks}">My Books</a>
-                            <a class="dropdown-item" href="#"
+                            <a class="dropdown-item" th:href="@{'/add/book'}"
                                th:text="#{home.nav.addBook}">Add a Book</a>
                         </div>
                     </li>

@@ -41,4 +41,12 @@ public class BookService {
                 getBookByIsbn(isbn).
                 orElse(null);
     }
+
+    public Book addBook(Book book) {
+        boolean uniqueIsbn = bookRepository.getBookByIsbn(book.getIsbn()).isEmpty();
+        if(uniqueIsbn) {
+            return bookRepository.save(book);
+        }
+        return null;
+    }
 }
