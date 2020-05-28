@@ -23,10 +23,13 @@
                         keep you busy reading for years to come.
                     </p>
 
-                    <a th:href="@{'/register'}" class="btn btn-link pr-2 pl-0 ml-0"
-                       th:text="#{home.lenders.register}">Register</a>
-                    <a th:href="@{'/lenders/all'}" class="btn btn-link pl-3"
-                       th:text="#{home.lenders.view}">View Lenders</a>
+                    <div th:if="${validUserLoggedIn}">
+                        <a th:href="@{'/register'}" class="btn btn-link pr-2 pl-0 ml-0"
+                           th:text="#{home.lenders.register}">Register</a>
+                        <a th:href="@{'/lenders/all'}" class="btn btn-link pl-3"
+                           th:text="#{home.lenders.view}">View Lenders</a>
+                    </div>
+
                 </div>
             </div>
             <!-- lenders card -->
@@ -46,10 +49,13 @@
                         A book for every day!
                     </p>
 
-                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0"
-                       th:text="#{home.books.myBooks}">My Books</a>
-                    <a th:href="@{'/add/book'}" class="btn btn-link pl-3"
-                       th:text="#{home.books.addBook}">Add a Book</a>
+                    <div th:if="${validUserLoggedIn}">
+                        <a href="#" class="btn btn-link pr-2 pl-0 ml-0"
+                           th:text="#{home.books.myBooks}">My Books</a>
+                        <a th:href="@{'/add/book'}" class="btn btn-link pl-3"
+                           th:text="#{home.books.addBook}">Add a Book</a>
+                    </div>
+
                 </div>
             </div>
             <!-- books card -->
@@ -60,7 +66,7 @@
                     <img class="card-img-top" th:src="@{/images/lending.png}" alt="lending">
                 </div>
 
-                <div class="card-body pb-1">
+                <div class="card-body pb-2">
                     <h4 class="card-title"
                         th:text="#{home.borrowed.title}">Borrowed Books</h4>
                     <p class="card-text" th:text="#{home.borrowed.desc}">
@@ -69,10 +75,12 @@
                         them in a timely manner.
                     </p>
 
-                    <a href="#" class="btn btn-link pr-2 pl-0 ml-0"
-                       th:text="#{home.borrowed.borrow}">Borrow a Book</a>
-                    <a href="#" class="btn btn-link pl-3"
-                       th:text="#{home.borrowed.return}">Return a book</a>
+                    <div th:if="${validUserLoggedIn}">
+                        <a href="#" class="btn btn-link pr-2 pl-0 ml-0"
+                           th:text="#{home.borrowed.borrow}">Borrow a Book</a>
+                        <a href="#" class="btn btn-link pl-3"
+                           th:text="#{home.borrowed.return}">Return a book</a>
+                    </div>
                 </div>
             </div>
             <!-- borrowed books card -->

@@ -1,4 +1,4 @@
-package edu.greenriver.it.booklendingspring.services.util;
+package edu.greenriver.it.booklendingspring.util;
 
 import edu.greenriver.it.booklendingspring.models.Lender;
 import org.springframework.security.core.GrantedAuthority;

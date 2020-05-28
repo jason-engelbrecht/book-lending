@@ -20,6 +20,10 @@ body {
     color: #4285F4 !important;
 }
 
+.disabled {
+    color: lightgray !important;
+}
+
 .form-group {
     margin-bottom: 20px;
 }

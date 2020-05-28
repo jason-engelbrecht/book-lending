@@ -2,6 +2,7 @@ package edu.greenriver.it.booklendingspring.controllers;
 
 import edu.greenriver.it.booklendingspring.models.Lender;
 import edu.greenriver.it.booklendingspring.services.LenderService;
+import edu.greenriver.it.booklendingspring.util.AuthenticationInformation;
 import lombok.ToString;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/lenders")
 @ToString
-public class LenderController {
+public class LenderController extends AuthenticationInformation {
     private LenderService lenderService;
 
     /**

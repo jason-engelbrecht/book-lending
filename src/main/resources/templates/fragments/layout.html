@@ -42,16 +42,26 @@
                         <a class="nav-link" th:href="@{'/'}"
                            th:text="#{home.nav.home}">Home</a>
                     </li>
-                    <li class="nav-item px-2">
+
+                    <li th:if="${validUserLoggedIn}" class="nav-item px-2">
                         <a class="nav-link" href="#"
                            th:text="#{home.nav.profile}">Profile</a>
                     </li>
-                    <li class="nav-item px-2">
+                    <li th:unless="${validUserLoggedIn}" class="nav-item px-2">
+                        <span class="nav-link disabled"
+                              th:text="#{home.nav.profile}">Profile</span>
+                    </li>
+
+                    <li th:if="${validUserLoggedIn}" class="nav-item px-2">
                         <a class="nav-link" th:href="@{'/lenders/all'}"
                            th:text="#{home.nav.lenders}">Lenders</a>
                     </li>
+                    <li th:unless="${validUserLoggedIn}" class="nav-item px-2">
+                        <span class="nav-link disabled"
+                              th:text="#{home.nav.lenders}">Lenders</span>
+                    </li>
 
-                    <li class="nav-item dropdown px-2">
+                    <li th:if="${validUserLoggedIn}" class="nav-item dropdown px-2">
                         <a class="nav-link dropdown-toggle" id="books" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false"
                            th:text="#{home.nav.books}">Books </a>
@@ -64,6 +74,10 @@
                                th:text="#{home.nav.addBook}">Add a Book</a>
                         </div>
                     </li>
+                    <li th:unless="${validUserLoggedIn}" class="nav-item dropdown px-2">
+                        <span class="nav-link dropdown-toggle disabled"
+                              th:text="#{home.nav.books}">Books</span>
+                    </li>
 
                     <li class="nav-item dropdown px-2">
                         <a class="nav-link dropdown-toggle" id="user" data-toggle="dropdown"
@@ -72,9 +86,19 @@
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="user">
                             <a class="dropdown-item" th:href="@{'/register'}"
                                th:text="#{home.nav.register}">Register</a>
-                            <a class="dropdown-item" href="#"
+
+                            <form th:if="${validUserLoggedIn}" th:action="@{/logout}" method="post" id="logout-form">
+                                <a class="dropdown-item logout" href="#"
+                                   onclick="document.getElementById('logout-form').submit();">Logout</a>
+                            </form>
+
+                            <a class="dropdown-item login" th:unless="${validUserLoggedIn}" th:href="@{/login}"
                                th:text="#{home.nav.login}">Login</a>
                         </div>
+                    </li>
+
+                    <li class="nav-item px-2" th:if="${validUserLoggedIn}">
+                        <a class="nav-link disabled" th:text="${'(' + loggedInUserName + ')'}"></a>
                     </li>
                 </ul>
             </div>

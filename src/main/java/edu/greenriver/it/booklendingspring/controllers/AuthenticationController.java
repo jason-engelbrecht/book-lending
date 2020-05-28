@@ -4,6 +4,7 @@ import edu.greenriver.it.booklendingspring.models.Book;
 import edu.greenriver.it.booklendingspring.models.Lender;
 import edu.greenriver.it.booklendingspring.services.BookService;
 import edu.greenriver.it.booklendingspring.services.LenderService;
+import edu.greenriver.it.booklendingspring.util.AuthenticationInformation;
 import lombok.ToString;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Controller
 @ToString
-public class AuthenticationController {
+public class AuthenticationController extends AuthenticationInformation {
     private LenderService lenderService;
     private BookService bookService;
 

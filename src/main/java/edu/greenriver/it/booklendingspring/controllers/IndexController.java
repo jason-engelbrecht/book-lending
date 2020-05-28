@@ -1,5 +1,6 @@
 package edu.greenriver.it.booklendingspring.controllers;
 
+import edu.greenriver.it.booklendingspring.util.AuthenticationInformation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Index controller
  */
 @Controller
-public class IndexController {
+public class IndexController extends AuthenticationInformation {
 
     /**
      * Index page controller

@@ -19,12 +19,12 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="text" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
 
             <div class="pt-4">
                 <button type="submit" class="btn btn-elegant">Login</button>
-                <a class="btn btn-outline-elegant">Register</a>
+                <a class="btn btn-outline-elegant" th:href="@{/register}">Register</a>
             </div>
         </form>
 

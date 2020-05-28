@@ -2,6 +2,7 @@ package edu.greenriver.it.booklendingspring.controllers;
 
 import edu.greenriver.it.booklendingspring.models.Book;
 import edu.greenriver.it.booklendingspring.services.BookService;
+import edu.greenriver.it.booklendingspring.util.AuthenticationInformation;
 import lombok.ToString;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ import java.io.InputStream;
 @Controller
 @RequestMapping("/books")
 @ToString
-public class BookController {
+public class BookController extends AuthenticationInformation {
     private BookService bookService;
 
     /**

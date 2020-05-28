@@ -3,7 +3,7 @@ package edu.greenriver.it.booklendingspring.services;
 import edu.greenriver.it.booklendingspring.models.Authority;
 import edu.greenriver.it.booklendingspring.models.Lender;
 import edu.greenriver.it.booklendingspring.repositories.LenderRepository;
-import edu.greenriver.it.booklendingspring.services.util.UserDetailsAdapter;
+import edu.greenriver.it.booklendingspring.util.UserDetailsAdapter;
 import lombok.ToString;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
