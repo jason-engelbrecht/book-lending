@@ -4,7 +4,7 @@
 
 <body>
 <header th:replace="fragments/layout :: header"></header>
-<div class="container main-content register-form p-5">
+<div class="container main-content main-form p-5">
 
     <div th:if="${error}" th:text="${error}"
          class="card red lighten-2 text-white text-center p-3 mb-4">
@@ -21,7 +21,7 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="text" class="form-control" id="password"required
+                <input type="text" class="form-control" id="password" required
                        name="password" th:field="*{password}">
             </div>
 

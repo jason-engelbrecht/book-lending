@@ -62,6 +62,19 @@ public class AuthenticationController {
         return "redirect:/lenders/" + lender.getUsername();
     }
 
+    @GetMapping("/login")
+    public String login(@RequestParam(required = false) String error,
+                        @RequestParam(required = false) String logout,
+                        Model model) {
+        if(error != null) {
+            model.addAttribute("message", "Invalid Credentials");
+        }
+        if(logout != null) {
+            model.addAttribute("message", "User Logged Out");
+        }
+        return "/forms/login";
+    }
+
     /**
      * Get add book route
      * @param model holds view data

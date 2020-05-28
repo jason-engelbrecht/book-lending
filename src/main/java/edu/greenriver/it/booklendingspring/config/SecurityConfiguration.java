@@ -1,5 +1,6 @@
 package edu.greenriver.it.booklendingspring.config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailsService service;
 
-    public SecurityConfiguration(UserDetailsService service) {
+    public SecurityConfiguration(@Qualifier("lenderService") UserDetailsService service) {
         this.service = service;
     }
 

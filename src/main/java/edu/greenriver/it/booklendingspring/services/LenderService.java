@@ -1,9 +1,17 @@
 package edu.greenriver.it.booklendingspring.services;
 
+import edu.greenriver.it.booklendingspring.models.Authority;
 import edu.greenriver.it.booklendingspring.models.Lender;
 import edu.greenriver.it.booklendingspring.repositories.LenderRepository;
+import edu.greenriver.it.booklendingspring.services.util.UserDetailsAdapter;
 import lombok.ToString;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * @author Jason Engelbrecht
@@ -12,7 +20,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @ToString
-public class LenderService {
+public class LenderService implements UserDetailsService {
     private LenderRepository lenderRepository;
 
     /**
@@ -50,8 +58,30 @@ public class LenderService {
     public Lender registerUser(Lender lender) {
         boolean passwordsMatch = lender.getPassword().equals(lender.getConfirmedPassword());
         if(passwordsMatch) {
+            String encodedPassword = new BCryptPasswordEncoder().encode(lender.getPassword());
+            lender.setPassword(encodedPassword);
+
+            Authority authority = Authority
+                    .builder()
+                    .authority("ROLE_USER")
+                    .lender(lender)
+                    .build();
+            lender.getAuthorities().add(authority);
+
             return lenderRepository.save(lender);
         }
         return null;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<Lender> lender = lenderRepository.getLenderByUsername(username);
+
+        if(lender.isPresent()) {
+            return new UserDetailsAdapter(lender.get());
+        }
+        else {
+            throw new UsernameNotFoundException("Username or password incorrect");
+        }
     }
 }

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * @author Jason Engelbrecht
@@ -32,4 +34,7 @@ public class Lender {
 
     @Lob //large text
     private String bio;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "lender")
+    private Collection<Authority> authorities = new HashSet<>();
 }
