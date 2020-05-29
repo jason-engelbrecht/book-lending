@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head"></head>
+
+<body>
+    <header th:replace="fragments/layout :: header"></header>
+
+    <div class="main-content p-5 ml-5 mr-5">
+        <div class="card red lighten-2 text-white text-center p-3 mb-4">
+            You are unauthorized to view this page.
+        </div>
+    </div>
+</body>
+
+<span th:replace="fragments/layout :: javascript"></span>
+</html>

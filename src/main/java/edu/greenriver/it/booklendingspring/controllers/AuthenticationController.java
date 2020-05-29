@@ -60,7 +60,7 @@ public class AuthenticationController extends AuthenticationInformation {
             model.addAttribute("error", "Passwords do not match!");
             return "/forms/register";
         }
-        return "redirect:/lenders/" + lender.getUsername();
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -74,6 +74,11 @@ public class AuthenticationController extends AuthenticationInformation {
             model.addAttribute("message", "User Logged Out");
         }
         return "/forms/login";
+    }
+
+    @GetMapping("/access_denied")
+    public String accessDenied() {
+        return "access_denied";
     }
 
     /**
