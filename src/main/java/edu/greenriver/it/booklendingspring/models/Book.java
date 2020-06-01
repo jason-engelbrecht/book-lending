@@ -33,6 +33,9 @@ public class Book {
     @Lob
     private Byte[] coverImage;
 
+    @ManyToOne
+    private Lender owner;
+
     /**
      * Get the image from the appropriate place
      * @return image location

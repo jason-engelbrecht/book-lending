@@ -5,6 +5,8 @@ import edu.greenriver.it.booklendingspring.models.Lender;
 import edu.greenriver.it.booklendingspring.repositories.LenderRepository;
 import edu.greenriver.it.booklendingspring.util.UserDetailsAdapter;
 import lombok.ToString;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -71,6 +73,16 @@ public class LenderService implements UserDetailsService {
             return lenderRepository.save(lender);
         }
         return null;
+    }
+
+    public Lender getLoggedInUser() {
+        Authentication auth = SecurityContextHolder.getContext()
+                .getAuthentication();
+
+        String username = auth.getName();
+        return lenderRepository
+               .getLenderByUsername(username)
+               .orElse(null);
     }
 
     @Override

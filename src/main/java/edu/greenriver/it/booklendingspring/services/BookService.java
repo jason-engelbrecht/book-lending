@@ -1,12 +1,14 @@
 package edu.greenriver.it.booklendingspring.services;
 
 import edu.greenriver.it.booklendingspring.models.Book;
+import edu.greenriver.it.booklendingspring.models.Lender;
 import edu.greenriver.it.booklendingspring.repositories.BookRepository;
 import lombok.ToString;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author Jason Engelbrecht
@@ -49,11 +51,15 @@ public class BookService {
      * Add a new book and its cover image
      * @param book book to add
      * @param file cover image
+     * @param loggedInUser book owner
      * @return added book or null
      */
-    public Book addBook(Book book, MultipartFile file) {
+    public Book addBook(Book book, Lender loggedInUser, MultipartFile file) {
         boolean uniqueIsbn = bookRepository.getBookByIsbn(book.getIsbn()).isEmpty();
         if(uniqueIsbn) {
+            book.setOwner(loggedInUser);
+            loggedInUser.getBooks().add(book);
+
             saveImageToBook(book, file);
             return bookRepository.save(book);
         }

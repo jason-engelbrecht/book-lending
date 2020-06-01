@@ -1,7 +1,9 @@
 package edu.greenriver.it.booklendingspring.controllers;
 
 import edu.greenriver.it.booklendingspring.models.Book;
+import edu.greenriver.it.booklendingspring.models.Lender;
 import edu.greenriver.it.booklendingspring.services.BookService;
+import edu.greenriver.it.booklendingspring.services.LenderService;
 import edu.greenriver.it.booklendingspring.util.AuthenticationInformation;
 import lombok.ToString;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author Jason Engelbrecht
@@ -26,13 +29,15 @@ import java.io.InputStream;
 @ToString
 public class BookController extends AuthenticationInformation {
     private BookService bookService;
+    private LenderService lenderService;
 
     /**
      * Initialize book service
      * @param bookService book service
      */
-    public BookController(BookService bookService) {
+    public BookController(BookService bookService, LenderService lenderService) {
         this.bookService = bookService;
+        this.lenderService = lenderService;
     }
 
     /**
@@ -45,6 +50,14 @@ public class BookController extends AuthenticationInformation {
         Iterable<Book> books = bookService.getAllBooks();
         model.addAttribute("books", books);
         return "books/all_books";
+    }
+
+    @GetMapping("/my_books")
+    public String myBooks(Model model) {
+        Lender lender = lenderService.getLoggedInUser();
+        List<Book> books = lender.getBooks();
+        model.addAttribute("books", books);
+        return "books/my_books";
     }
 
     /**

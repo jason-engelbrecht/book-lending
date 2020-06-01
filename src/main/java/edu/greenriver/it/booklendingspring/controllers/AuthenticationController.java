@@ -102,7 +102,8 @@ public class AuthenticationController extends AuthenticationInformation {
     @PostMapping("/add/book")
     public String postAddBook(@ModelAttribute Book book, Model model,
                               @RequestParam("cover-image") MultipartFile file) {
-        book = bookService.addBook(book, file);
+        Lender owner = lenderService.getLoggedInUser();
+        book = bookService.addBook(book, owner, file);
         if(book == null) {
             model.addAttribute("error", "ISBN is already in use");
             return "/forms/add_book";
