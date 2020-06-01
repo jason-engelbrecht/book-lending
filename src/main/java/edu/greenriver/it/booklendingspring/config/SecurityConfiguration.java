@@ -1,5 +1,6 @@
 package edu.greenriver.it.booklendingspring.config;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,15 +12,29 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * @author Jason Engelbrecht
+ * @version 1.0
+ * Spring Security configuration
+ */
 @Configuration
 @EnableWebSecurity
+@ToString
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailsService service;
 
+    /**
+     * Constructor
+     * @param service service to inject
+     */
     public SecurityConfiguration(@Qualifier("lenderService") UserDetailsService service) {
         this.service = service;
     }
 
+    /**
+     * Get a new password encoder
+     * @return password encoder
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

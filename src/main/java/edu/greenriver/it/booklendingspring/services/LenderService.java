@@ -75,6 +75,10 @@ public class LenderService implements UserDetailsService {
         return null;
     }
 
+    /**
+     * Get the currently logged in user
+     * @return logged in user or null
+     */
     public Lender getLoggedInUser() {
         Authentication auth = SecurityContextHolder.getContext()
                 .getAuthentication();

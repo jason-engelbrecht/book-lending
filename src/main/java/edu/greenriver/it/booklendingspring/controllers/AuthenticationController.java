@@ -63,6 +63,13 @@ public class AuthenticationController extends AuthenticationInformation {
         return "redirect:/login";
     }
 
+    /**
+     * User login route
+     * @param error invalid login
+     * @param logout user logged out
+     * @param model holds view data
+     * @return login
+     */
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error,
                         @RequestParam(required = false) String logout,
@@ -76,6 +83,10 @@ public class AuthenticationController extends AuthenticationInformation {
         return "/forms/login";
     }
 
+    /**
+     * Access denied route
+     * @return access_denied
+     */
     @GetMapping("/access_denied")
     public String accessDenied() {
         return "access_denied";

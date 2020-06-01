@@ -32,8 +32,9 @@ public class BookController extends AuthenticationInformation {
     private LenderService lenderService;
 
     /**
-     * Initialize book service
+     * Initialize book & lender service
      * @param bookService book service
+     * @param lenderService lender service
      */
     public BookController(BookService bookService, LenderService lenderService) {
         this.bookService = bookService;
@@ -52,6 +53,11 @@ public class BookController extends AuthenticationInformation {
         return "books/all_books";
     }
 
+    /**
+     * Get users books, "my books"
+     * @param model holds view data
+     * @return my_books
+     */
     @GetMapping("/my_books")
     public String myBooks(Model model) {
         Lender lender = lenderService.getLoggedInUser();
