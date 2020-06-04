@@ -68,10 +68,12 @@
                     <a th:href="@{'/books/' + ${book.getIsbn()}}"
                        class="btn btn-lg btn-link p-0">View </a>
 
-                    <a href=""
-                       class="btn btn-lg btn-link p-0">Return</a>
+                    <span th:if="${loggedInUserName.equals(lender.getUsername())}">
+                        <a th:href="@{'/books/return/' + ${book.getIsbn()}}"
+                           class="btn btn-lg btn-link p-0">Return</a>
+                    </span>
                 </h5>
-                <h5 th:if="${booksToLend.isEmpty()}">
+                <h5 th:if="${borrowedBooks.isEmpty()}">
                     View books that you can borrow <a th:href="@{/lenders/all}">here</a>.
                 </h5>
             </div>

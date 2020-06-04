@@ -88,6 +88,15 @@ public class BookController extends AuthenticationInformation {
         return "redirect:/lenders/" + book.getOwner().getUsername();
     }
 
+    @GetMapping("/return/{isbn}")
+    public String returnBook(@PathVariable String isbn) {
+        Lender loggedInUser = lenderService.getLoggedInUser();
+        Book book = bookService.getBook(isbn);
+        lenderService.returnBook(loggedInUser, book);
+
+        return "redirect:/lenders/" + book.getOwner().getUsername();
+    }
+
     /**
      * Get book cover image by isbn
      * @param isbn isbn of book to get image

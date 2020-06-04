@@ -80,6 +80,16 @@ public class LenderService implements UserDetailsService {
         }
     }
 
+    public void returnBook(Lender lender, Book book) {
+        if(book.getBorrower() != null) {
+            lender.getBorrowedBooks().remove(book);
+            book.setBorrower(null);
+
+            lenderRepository.save(lender);
+            bookRepository.save(book);
+        }
+    }
+
     /**
      * Register a new lender user
      * @param lender lender to regiser
