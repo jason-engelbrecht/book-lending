@@ -42,4 +42,7 @@ public class Lender {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Book> books = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "borrower")
+    private List<Book> borrowedBooks = new ArrayList<>();
 }

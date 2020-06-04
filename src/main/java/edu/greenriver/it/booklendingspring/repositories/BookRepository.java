@@ -1,9 +1,11 @@
 package edu.greenriver.it.booklendingspring.repositories;
 
 import edu.greenriver.it.booklendingspring.models.Book;
+import edu.greenriver.it.booklendingspring.models.Lender;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -19,4 +21,10 @@ public interface BookRepository extends CrudRepository<Book, Long> {
      * @return an optional book
      */
     Optional<Book> getBookByIsbn(String isbn);
+
+    List<Book> getAllByOwnerAndBorrowerIsNull(Lender lender);
+
+    List<Book> getAllByOwnerAndBorrowerIsNotNull(Lender lender);
+
+    List<Book> getAllByBorrower(Lender lender);
 }

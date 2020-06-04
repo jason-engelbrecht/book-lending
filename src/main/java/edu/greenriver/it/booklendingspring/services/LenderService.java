@@ -1,7 +1,9 @@
 package edu.greenriver.it.booklendingspring.services;
 
 import edu.greenriver.it.booklendingspring.models.Authority;
+import edu.greenriver.it.booklendingspring.models.Book;
 import edu.greenriver.it.booklendingspring.models.Lender;
+import edu.greenriver.it.booklendingspring.repositories.BookRepository;
 import edu.greenriver.it.booklendingspring.repositories.LenderRepository;
 import edu.greenriver.it.booklendingspring.util.UserDetailsAdapter;
 import lombok.ToString;
@@ -13,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -24,13 +27,16 @@ import java.util.Optional;
 @ToString
 public class LenderService implements UserDetailsService {
     private LenderRepository lenderRepository;
+    private BookRepository bookRepository;
 
     /**
      * Initialize lender repository
      * @param lenderRepository lender repository
+     * @param bookRepository book repository
      */
-    public LenderService(LenderRepository lenderRepository) {
+    public LenderService(LenderRepository lenderRepository, BookRepository bookRepository) {
         this.lenderRepository = lenderRepository;
+        this.bookRepository = bookRepository;
     }
 
     /**
@@ -50,6 +56,28 @@ public class LenderService implements UserDetailsService {
         return lenderRepository.
                 getLenderByUsername(username).
                 orElse(null);
+    }
+
+    public List<Book> getBooksToLoan(Lender lender) {
+        return bookRepository.getAllByOwnerAndBorrowerIsNull(lender);
+    }
+
+    public List<Book> getLoanedBooks(Lender lender) {
+        return bookRepository.getAllByOwnerAndBorrowerIsNotNull(lender);
+    }
+
+    public List<Book> getBorrowedBooks(Lender lender) {
+        return bookRepository.getAllByBorrower(lender);
+    }
+
+    public void borrowBook(Lender lender, Book book) {
+        if(book.getBorrower() == null) {
+            lender.getBorrowedBooks().add(book);
+            book.setBorrower(lender);
+
+            lenderRepository.save(lender);
+            bookRepository.save(book);
+        }
     }
 
     /**

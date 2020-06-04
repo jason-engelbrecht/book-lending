@@ -35,6 +35,8 @@ public class Book {
 
     @ManyToOne
     private Lender owner;
+    @ManyToOne
+    private Lender borrower;
 
     /**
      * Get the image from the appropriate place

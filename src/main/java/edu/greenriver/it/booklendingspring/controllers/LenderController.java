@@ -1,5 +1,6 @@
 package edu.greenriver.it.booklendingspring.controllers;
 
+import edu.greenriver.it.booklendingspring.models.Book;
 import edu.greenriver.it.booklendingspring.models.Lender;
 import edu.greenriver.it.booklendingspring.services.LenderService;
 import edu.greenriver.it.booklendingspring.util.AuthenticationInformation;
@@ -9,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * @author Jason Engelbrecht
@@ -50,7 +53,10 @@ public class LenderController extends AuthenticationInformation {
     @GetMapping("/{username}")
     public String viewLender(@PathVariable String username, Model model) {
         Lender lender = lenderService.getLender(username);
+        List<Book> booksToLend = lenderService.getBooksToLoan(lender);
+
         model.addAttribute("lender", lender);
+        model.addAttribute("booksToLend", booksToLend);
         return "lenders/view_lender";
     }
 }
