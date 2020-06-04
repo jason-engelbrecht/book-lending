@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head"></head>
+
+<body>
+    <header th:replace="fragments/layout :: header"></header>
+
+    <div class="main-content p-5 text-center">
+        <div class="card mb-4 mx-auto" style="width: 40rem">
+            <img class="card-img" th:src="@{/images/cat.jpg}" alt="cat">
+        </div>
+        <h4 class="mb-2" th:text="${message}"></h4>
+        <h5 th:text="${reason}"></h5>
+    </div>
+</body>
+
+<span th:replace="fragments/layout :: javascript"></span>
+</html>
