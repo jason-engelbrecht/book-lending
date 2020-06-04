@@ -54,9 +54,13 @@ public class LenderController extends AuthenticationInformation {
     public String viewLender(@PathVariable String username, Model model) {
         Lender lender = lenderService.getLender(username);
         List<Book> booksToLend = lenderService.getBooksToLoan(lender);
+        List<Book> loanedBooks = lenderService.getLoanedBooks(lender);
+        List<Book> borrowedBooks = lenderService.getBorrowedBooks(lender);
 
         model.addAttribute("lender", lender);
         model.addAttribute("booksToLend", booksToLend);
+        model.addAttribute("loanedBooks", loanedBooks);
+        model.addAttribute("borrowedBooks", borrowedBooks);
         return "lenders/view_lender";
     }
 }

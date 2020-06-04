@@ -26,7 +26,7 @@
         <div class="col-md-6">
             <h1>Books to Lend</h1>
             <div class="card p-4 mb-4 hoverable">
-                <h5 th:each="book : ${booksToLend}">
+                <h5 th:each="book : ${booksToLend}" class="border-bottom py-2">
                     <span class="h5">Title: </span>
                     <span th:text="${book.getTitle()}"></span>
                     <a th:href="@{'/books/' + ${book.getIsbn()}}"
@@ -38,55 +38,41 @@
                     </span>
                 </h5>
                 <h5 th:if="${booksToLend.isEmpty()}">
-                    Add a new book to loan out <a th:href="@{/add/book}">here</a>
+                    Add a new book to loan out <a th:href="@{/add/book}">here</a>.
                 </h5>
             </div>
 
             <h1>Loaned Books</h1>
             <div class="card p-4 mb-4 hoverable">
-                <h5>
+                <h5 th:each="book : ${loanedBooks}" class="border-bottom py-2">
                     <span class="h5">Title: </span>
-                    <span>Book #1, </span>
-                    <a href="#" class="btn btn-lg btn-link p-0">View
-                        <i class="fas fa-arrow-right"></i></a>
+                    <span th:text="${book.getTitle()}"></span>
+
+                    (<a th:href="@{'/lenders/' + ${book.getBorrower().getUsername()}}"
+                        th:text="${book.getBorrower().getUsername()}"
+                        class="btn btn-lg btn-link p-0"></a>)
+
+                    <a th:href="@{'/books/' + ${book.getIsbn()}}"
+                       class="btn btn-lg btn-link p-0">View </a>
                 </h5>
-                <hr>
-                <h5>
-                    <span class="h5">Title: </span>
-                    <span>Book #2, </span>
-                    <a href="#" class="btn btn-lg btn-link p-0">View
-                        <i class="fas fa-arrow-right"></i></a>
-                </h5>
-                <hr>
-                <h5>
-                    <span class="h5">Title: </span>
-                    <span>Book #3, </span>
-                    <a href="#" class="btn btn-lg btn-link p-0">View
-                        <i class="fas fa-arrow-right"></i></a>
+                <h5 th:if="${loanedBooks.isEmpty()}">
+                    No users are currently borrowing your books.
                 </h5>
             </div>
 
             <h1>Borrowed Books</h1>
             <div class="card p-4 mb-3 hoverable">
-                <h5>
+                <h5 th:each="book : ${borrowedBooks}" class="border-bottom py-2">
                     <span class="h5">Title: </span>
-                    <span>Book #1, </span>
-                    <a href="#" class="btn btn-lg btn-link p-0">View
-                        <i class="fas fa-arrow-right"></i></a>
+                    <span th:text="${book.getTitle()}"></span>
+                    <a th:href="@{'/books/' + ${book.getIsbn()}}"
+                       class="btn btn-lg btn-link p-0">View </a>
+
+                    <a href=""
+                       class="btn btn-lg btn-link p-0">Return</a>
                 </h5>
-                <hr>
-                <h5>
-                    <span class="h5">Title: </span>
-                    <span>Book #2, </span>
-                    <a href="#" class="btn btn-lg btn-link p-0">View
-                        <i class="fas fa-arrow-right"></i></a>
-                </h5>
-                <hr>
-                <h5>
-                    <span class="h5">Title: </span>
-                    <span>Book #3, </span>
-                    <a href="#" class="btn btn-lg btn-link p-0">View
-                        <i class="fas fa-arrow-right"></i></a>
+                <h5 th:if="${booksToLend.isEmpty()}">
+                    View books that you can borrow <a th:href="@{/lenders/all}">here</a>.
                 </h5>
             </div>
         </div>
