@@ -6,8 +6,8 @@
 <header th:replace="fragments/layout :: header"></header>
 <div class="container main-content p-5">
     <div class="row">
-        <h1 class="ml-3" th:text="${book.getTitle()} + ' by ' + ${book.getAuthor()}"></h1>
         <div class="col-md-8">
+            <h1 th:text="${book.getTitle()} + ' by ' + ${book.getAuthor()}"></h1>
             <div class="card p-4 hoverable">
                 <h5><span class="h5">ID: </span>
                     <span th:text="${book.getId()}"></span></h5>
@@ -26,8 +26,8 @@
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card hoverable">
+        <div class="col-md-4 mt-5">
+            <div class="card mt-2">
                 <img class="card-img rounded" th:src="@{${book.getImage()}}">
             </div>
         </div>
