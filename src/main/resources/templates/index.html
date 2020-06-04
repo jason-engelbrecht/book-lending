@@ -76,9 +76,11 @@
                     </p>
 
                     <div th:if="${validUserLoggedIn}">
-                        <a href="#" class="btn btn-link pr-2 pl-0 ml-0"
+                        <a th:href="@{'/lenders/all'}"
+                           class="btn btn-link pr-2 pl-0 ml-0"
                            th:text="#{home.borrowed.borrow}">Borrow a Book</a>
-                        <a href="#" class="btn btn-link pl-3"
+                        <a th:href="@{'/lenders/' + ${loggedInUserName}}"
+                           class="btn btn-link pl-3"
                            th:text="#{home.borrowed.return}">Return a book</a>
                     </div>
                 </div>

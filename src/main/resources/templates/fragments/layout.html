@@ -44,7 +44,7 @@
                     </li>
 
                     <li th:if="${validUserLoggedIn}" class="nav-item px-2">
-                        <a class="nav-link" href="#"
+                        <a class="nav-link" th:href="@{'/lenders/' + ${loggedInUserName}}"
                            th:text="#{home.nav.profile}">Profile</a>
                     </li>
                     <li th:unless="${validUserLoggedIn}" class="nav-item px-2">
