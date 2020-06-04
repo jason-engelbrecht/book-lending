@@ -58,18 +58,38 @@ public class LenderService implements UserDetailsService {
                 orElse(null);
     }
 
+    /**
+     * Get books to loan
+     * @param lender lender
+     * @return list of books
+     */
     public List<Book> getBooksToLoan(Lender lender) {
         return bookRepository.getAllByOwnerAndBorrowerIsNull(lender);
     }
 
+    /**
+     * Get loaned books
+     * @param lender lender
+     * @return list of books
+     */
     public List<Book> getLoanedBooks(Lender lender) {
         return bookRepository.getAllByOwnerAndBorrowerIsNotNull(lender);
     }
 
+    /**
+     * Get borrowed books
+     * @param lender lender
+     * @return list of books
+     */
     public List<Book> getBorrowedBooks(Lender lender) {
         return bookRepository.getAllByBorrower(lender);
     }
 
+    /**
+     * Borrow a book
+     * @param lender borrower
+     * @param book book
+     */
     public void borrowBook(Lender lender, Book book) {
         if(book.getBorrower() == null) {
             lender.getBorrowedBooks().add(book);
@@ -80,6 +100,11 @@ public class LenderService implements UserDetailsService {
         }
     }
 
+    /**
+     * Return a book
+     * @param lender borrower
+     * @param book book
+     */
     public void returnBook(Lender lender, Book book) {
         if(book.getBorrower() != null) {
             lender.getBorrowedBooks().remove(book);

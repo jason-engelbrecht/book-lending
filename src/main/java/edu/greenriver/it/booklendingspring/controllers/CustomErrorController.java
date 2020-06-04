@@ -1,6 +1,7 @@
 package edu.greenriver.it.booklendingspring.controllers;
 
 import edu.greenriver.it.booklendingspring.util.AuthenticationInformation;
+import lombok.ToString;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author Jason Engelbrecht
+ * @version 1.0
+ * Custom error controller
+ */
 @Controller
+@ToString
 public class CustomErrorController extends AuthenticationInformation
                                    implements ErrorController {
 
+    /**
+     * Error handling route
+     * @param request http request
+     * @param model hold view data
+     * @return error
+     */
     @RequestMapping("/error")
     public String errorHandler(HttpServletRequest request, Model model) {
         String message = "Oops! Something went wrong! We'll get one" +

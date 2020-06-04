@@ -79,6 +79,11 @@ public class BookController extends AuthenticationInformation {
         return "books/view_book";
     }
 
+    /**
+     * Borrow a book by isbn
+     * @param isbn isbn of book
+     * @return books owners lender page
+     */
     @GetMapping("/borrow/{isbn}")
     public String borrowBook(@PathVariable String isbn) {
         Lender loggedInUser = lenderService.getLoggedInUser();
@@ -88,13 +93,18 @@ public class BookController extends AuthenticationInformation {
         return "redirect:/lenders/" + book.getOwner().getUsername();
     }
 
+    /**
+     * Return a book by isbn
+     * @param isbn isbn of book
+     * @return logged in users lender page
+     */
     @GetMapping("/return/{isbn}")
     public String returnBook(@PathVariable String isbn) {
         Lender loggedInUser = lenderService.getLoggedInUser();
         Book book = bookService.getBook(isbn);
         lenderService.returnBook(loggedInUser, book);
 
-        return "redirect:/lenders/" + book.getOwner().getUsername();
+        return "redirect:/lenders/" + loggedInUser.getUsername();
     }
 
     /**

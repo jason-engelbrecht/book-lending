@@ -22,9 +22,24 @@ public interface BookRepository extends CrudRepository<Book, Long> {
      */
     Optional<Book> getBookByIsbn(String isbn);
 
+    /**
+     * Get all by owner, borrower null
+     * @param lender lender
+     * @return list of books
+     */
     List<Book> getAllByOwnerAndBorrowerIsNull(Lender lender);
 
+    /**
+     * Get all by owner with borrower
+     * @param lender lender
+     * @return list of books
+     */
     List<Book> getAllByOwnerAndBorrowerIsNotNull(Lender lender);
 
+    /**
+     * Get all by borrower
+     * @param lender lender
+     * @return list of books
+     */
     List<Book> getAllByBorrower(Lender lender);
 }
